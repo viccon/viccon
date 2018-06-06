@@ -4,6 +4,8 @@ https://portal.msrc.microsoft.com/en-us/security-guidance/acknowledgments
 
 https://technet.microsoft.com/en-us/security/dn469163
 
+https://source.android.com/security/overview/acknowledgements
+
 https://helpx.adobe.com/security.html
 
 https://www.mozilla.org/en-US/security/advisories/
