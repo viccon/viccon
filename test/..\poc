@@ -1,0 +1,30 @@
+from SocketServer import ThreadingMixIn
+from BaseHTTPServer import HTTPServer
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+
+HOST_NAME = "0.0.0.0"
+PORT_NUMBER = 8080
+
+class ThreadingServer(ThreadingMixIn, HTTPServer):
+    pass
+
+class Handler(SimpleHTTPRequestHandler):
+    def do_GET(s):
+        try:
+            s.send_response(200)
+            s.send_header("Content-type", "application/json")
+            s.send_header("Content-Length", "87931")
+            s.end_headers()
+            response = "{}"
+            s.wfile.write(response)
+        except:
+            s.send_response(200)
+            s.wfile.write("Not Found.")
+
+if __name__ == "__main__":
+    httpd = ThreadingServer((HOST_NAME, PORT_NUMBER), Handler)
+    try:
+        print "Listening at %s:%s." % (HOST_NAME, PORT_NUMBER)
+        httpd.serve_forever()
+    except:
+        httpd.server_close()
